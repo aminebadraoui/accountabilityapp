@@ -45,9 +45,6 @@ extension TaskListSelectionVC: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell") as? TaskCell {
             let taskName = tasks[indexPath.row]
             cell.configure(with: taskName)
-            
-            
-            
             return cell
         } else {
             return UITableViewCell()
@@ -56,6 +53,12 @@ extension TaskListSelectionVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? TaskCell {
+            cell.toggleSelection()
+        }
     }
 }
 
